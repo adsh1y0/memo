@@ -92,7 +92,7 @@ type entry struct {
 	Body template.HTML
 }
 
-var commands = []cli.Command{
+var commands = []*cli.Command{
 	{
 		Name:    "new",
 		Aliases: []string{"n"},
@@ -105,11 +105,11 @@ var commands = []cli.Command{
 		Usage:   "list memo",
 		Action:  cmdList,
 		Flags: []cli.Flag{
-			cli.BoolFlag{
+			&cli.BoolFlag{
 				Name:  "fullpath",
 				Usage: "show file path",
 			},
-			cli.StringFlag{
+			&cli.StringFlag{
 				Name:  "format",
 				Usage: "print the result using a Go template `string`",
 			},
@@ -145,7 +145,7 @@ var commands = []cli.Command{
 		Usage:   "configure",
 		Action:  cmdConfig,
 		Flags: []cli.Flag{
-			cli.BoolFlag{
+			&cli.BoolFlag{
 				Name:  "cat",
 				Usage: "cat the file",
 			},
@@ -157,7 +157,7 @@ var commands = []cli.Command{
 		Usage:   "start http server",
 		Action:  cmdServe,
 		Flags: []cli.Flag{
-			cli.StringFlag{
+			&cli.StringFlag{
 				Name:  "addr",
 				Value: ":8080",
 				Usage: "server address",
